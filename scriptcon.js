@@ -18,13 +18,12 @@ const subjectAlert = document.querySelector("#subjectAlert");
 const emailAlert = document.querySelector("#emailAlert");
 const adressAlert = document.querySelector("#adressAlert");
 
-form.addEventListener("sumbit", runForm);
+form.addEventListener("submit", runForm);
 
 function runForm(sub){
     sub.preventDefault();
 
     let inputName = yourName.value.trim();
-    console.log("Name: " + inputName);
     nameAlert.innerHTML = "";
     if (inputName.length < 2){
         nameAlert.innerHTML += "This name is to short";
@@ -59,3 +58,4 @@ function runForm(sub){
         submitted.innerHTML = "You need to fix some errors";
       }
 };
+
