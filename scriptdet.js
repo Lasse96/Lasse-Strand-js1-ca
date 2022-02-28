@@ -7,7 +7,12 @@ const id = params.get("id");
 // console.log(id);
 
 const out = document.querySelector("#detail");
+const nav = document.querySelector("#nav");
 
+nav.innerHTML = `<ul>
+<li><a href="index.html" class= "navlink">Home</a></li>
+<li><a href="contact.html" class= "navlink">Contact</a></li>
+</ul>`;
 
 const listBurger = (list) =>{
     // console.log(list);
@@ -19,8 +24,18 @@ const listBurger = (list) =>{
         <li><p>Ingredients: ${item.ingredients.length}</p></li>
         </ul>`;
         out.innerHTML += newul;
+        document.title = `${item.name}`;
     }
 };
+
+const errorBanner = (message = "API did not load", className) => {
+    let banner = document.createElement("div");
+    banner.classList.add("error");
+    if (className) banner.classList.add(className);
+    banner.innerHTML = message;
+    let firstNode = document.body.childNodes[0];
+    document.body.insertBefore(banner, firstNode); 
+  };
 
 fetch(`https://burgers1.p.rapidapi.com/burgers/?id=${id}`, {
 	"method": "GET",
@@ -32,6 +47,5 @@ fetch(`https://burgers1.p.rapidapi.com/burgers/?id=${id}`, {
 .then(response => response.json())
 .then(data => listBurger(data))
 .catch(err => {
-	console.error(err);
-    out.innerHTML = `<div> Try refreshing</div>`;
+	errorBanner()
 });
