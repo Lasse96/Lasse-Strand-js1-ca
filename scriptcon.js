@@ -1,9 +1,3 @@
-const nav = document.querySelector("#nav");
-
-nav.innerHTML = `<ul>
-<li><a href="index.html" class= "navlink">Home</a></li>
-<li><a href="contact.html" class= "navlink">Contact</a></li>
-</ul>`;
 
 const submitted = document.querySelector("#submitted")
 const form = document.querySelector("#form");
